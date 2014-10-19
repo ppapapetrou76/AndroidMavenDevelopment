@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">DroidMaven App</string>
+    <string name="hello_world">text_string</string>
+    <string name="view_author">View Author Name!</string>
+    <string name="action_settings">Settings</string>
+</resources>

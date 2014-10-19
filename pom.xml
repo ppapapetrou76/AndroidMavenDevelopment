@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.packt.androidMaven</groupId>
+    <artifactId>sampleProject</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
+    <name>AndroidDevelopmentMaven</name>
+    <description>Android App Development with Maven</description>
+
+    <modules>
+        <module>model</module>
+        <module>service</module>
+        <module>AndroidTier</module>
+        <module>AndroidUnitTests</module>
+  </modules>
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <platform.version>4.4.2_r3</platform.version>
+        <android.plugin.version>3.8.2</android.plugin.version>
+        <maven.compiler.source>1.7</maven.compiler.source>
+        <maven.compiler.target>1.7</maven.compiler.target>
+    </properties>
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>com.google.android</groupId>
+                <artifactId>android</artifactId>
+                <version>${platform.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.google.android</groupId>
+                <artifactId>android-test</artifactId>
+                <version>4.1.1.4</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+  
+    <build>
+        <finalName>${project.artifactId}</finalName>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>com.jayway.maven.plugins.android.generation2</groupId>
+                    <artifactId>android-maven-plugin</artifactId>
+                    <version>${android.plugin.version}</version>
+                    <configuration>
+                        <undeployBeforeDeploy>true</undeployBeforeDeploy>
+                    </configuration>                    
+                    <extensions>true</extensions>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+        <plugins>
+            <plugin>
+                <groupId>com.jayway.maven.plugins.android.generation2</groupId>
+                <artifactId>android-maven-plugin</artifactId>
+                <extensions>true</extensions>
+                <configuration>
+                    <emulator>
+                        <!--Name of the AVD to start/stop-->
+                        <avd>Nexus4-18-xhdpi</avd>
+                        <!-- Timeout to consider whether or not the AVD is successful or failed. Do not be stingy on this value, since your material configuration may affect and influence on startup speed-->
+                        <wait>30000</wait>
+                        <!-- Any other option-->
+                        <options/>
+                    </emulator>
+                    <sdk>
+                        <platform>19</platform>
+                    </sdk>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>
