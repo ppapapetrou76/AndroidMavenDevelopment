@@ -8,14 +8,7 @@
     </parent>
     <artifactId>AndroidUnitTests</artifactId>
     <packaging>apk</packaging>
-    
     <dependencies>
-        <dependency>
-            <groupId>com.packt.androidMaven</groupId>
-            <artifactId>AndroidTier</artifactId>
-            <version>${project.version}</version>
-            <type>apk</type>
-        </dependency>
         <dependency>
             <groupId>com.packt.androidMaven</groupId>
             <artifactId>AndroidTier</artifactId>
@@ -27,18 +20,8 @@
         <dependency>
             <groupId>com.google.android</groupId>
             <artifactId>android-test</artifactId>
-            <version>4.1.1.4</version>
             <scope>provided</scope>
-            <exclusions>
-                <exclusion>
-                    <artifactId>junit</artifactId>
-                    <groupId>junit</groupId>
-                </exclusion>
-            </exclusions>
-        </dependency>        
+        </dependency>      
+        
     </dependencies>
-    <properties>
-        <maven.compiler.source>1.7</maven.compiler.source>
-        <maven.compiler.target>1.7</maven.compiler.target>
-    </properties>
 </project>

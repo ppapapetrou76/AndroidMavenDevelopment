@@ -7,9 +7,9 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.TextView;
-import com.packt.androidmaven.chapter2.model.Book;
-import com.packt.androidmaven.chapter2.service.BookService;
-import com.packt.androidmaven.chapter2.service.BookServiceImpl;
+import com.packt.androidmaven.model.Book;
+import com.packt.androidmaven.service.BookService;
+import com.packt.androidmaven.service.BookServiceImpl;
 
 public class BookActivity extends Activity {
 
@@ -36,6 +36,7 @@ public class BookActivity extends Activity {
     public void addListenerOnButton() {
         button = (Button) findViewById(R.id.button1);
         button.setOnClickListener(new OnClickListener() {
+            @Override
             public void onClick(View view) {
                 Intent intent = new Intent(view.getContext(), AuthorActivity.class);
                 intent.putExtra(AUTHOR, "Patroklos Papapetrou");
@@ -44,5 +45,4 @@ public class BookActivity extends Activity {
         });
 
     }
-
 }

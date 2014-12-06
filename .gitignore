@@ -24,3 +24,8 @@ proguard/
 
 # Log Files
 *.log
+/AndroidIntegrationTests/target/
+/AndroidIntegrationTests - Copy/target/
+/SpoonIntegrationTests/target/
+/SelendroidTests - Copy/target/
+/RobotiumTests/target/

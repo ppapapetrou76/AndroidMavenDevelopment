@@ -6,13 +6,12 @@ import android.widget.Button;
 import android.test.ActivityUnitTestCase;
 import android.test.suitebuilder.annotation.SmallTest;
 import com.packt.androidMaven.BookActivity;
-import android.R;
+import com.packt.androidMaven.R;
 
-public class BookActivityTest extends ActivityUnitTestCase<BookActivity>{
+public class BookActivityTest extends ActivityUnitTestCase<BookActivity> {
 
     BookActivity bookActivity;
 
-    // TextView of the MainActivity to be tested
     private TextView textView;
     private Button button;
 
@@ -28,10 +27,11 @@ public class BookActivityTest extends ActivityUnitTestCase<BookActivity>{
         startActivity(new Intent(getInstrumentation().getTargetContext(), BookActivity.class), null, null);
 
         // Getting a reference to the MainActivity of the target application
-        bookActivity = (BookActivity)getActivity();
+        bookActivity = (BookActivity) getActivity();
 
         // Getting a reference to the TextView of the MainActivity of the target application
         textView = (TextView) bookActivity.findViewById(R.id.text1);
+        button = (Button) bookActivity.findViewById(R.id.button1);
     }
 
     @Override
@@ -40,14 +40,23 @@ public class BookActivityTest extends ActivityUnitTestCase<BookActivity>{
     }
 
     @SmallTest
-    public void testHello(){
-        // The actual text displayed in the textview
-        String actual=textView.getText().toString();
+    public void testPreconditions() {
+        assertNotNull(button);
+        assertNotNull(textView);
+    }
 
-        // The expected text to be displayed in the textview
-        String expected = "Hello world!";
+    @SmallTest
+    public void testButtonLabel() {
+        String actual = button.getText().toString();
+        String expected = "View Author Name!";
 
-        // Check whether both are equal, otherwise test fails
-        assertEquals(expected,actual );
+        assertEquals(expected, actual);
+    }
+
+    @SmallTest
+    public void testTextViewText() {
+        String actual = textView.getText().toString();
+        String expected = "Book{id=null, title='Maven and Android', format='eBook', color='black', numberOfPages=150, brandNew=null}";
+        assertEquals(expected, actual);
     }
 }
