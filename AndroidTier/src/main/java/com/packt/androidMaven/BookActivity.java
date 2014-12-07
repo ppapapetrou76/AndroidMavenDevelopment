@@ -1,12 +1,15 @@
 package com.packt.androidMaven;
 
 import android.app.Activity;
+import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
+import static android.widget.Toast.LENGTH_SHORT;
 import com.packt.androidmaven.model.Book;
 import com.packt.androidmaven.service.BookService;
 import com.packt.androidmaven.service.BookServiceImpl;
@@ -24,6 +27,7 @@ public class BookActivity extends Activity {
         setTextValue();
 
         addListenerOnButton();
+        addListenerOnPaidButton();
     }
 
     private void setTextValue() {
@@ -43,6 +47,21 @@ public class BookActivity extends Activity {
                 startActivity(intent);
             }
         });
+    }
 
+    public void addListenerOnPaidButton() {
+        button = (Button) findViewById(R.id.paidbutton);
+        button.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                try {
+                    Intent intent = new Intent();
+                    intent.setAction("com.packt.paid.intent.action.Launch");
+                    startActivity(intent);
+                } catch (ActivityNotFoundException e) {
+                    Toast.makeText(view.getContext(), "You need to purchase the full version!", LENGTH_SHORT).show();
+                }
+            }
+        });
     }
 }

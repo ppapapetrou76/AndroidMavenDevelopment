@@ -13,6 +13,8 @@
     <properties>
         <robolectric.version>2.2</robolectric.version>
         <junit.version>4.11</junit.version>
+        <flavor>paid</flavor>
+        <android.res.dir>${project.basedir}/res</android.res.dir>
     </properties>
 
     <dependencies>
@@ -48,5 +50,45 @@
         </dependency>
 
     </dependencies>    
-    
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>com.jayway.maven.plugins.android.generation2</groupId>
+                <artifactId>android-maven-plugin</artifactId>
+                <configuration>
+                    <renameManifestPackage>com.packt.androidMaven.${flavor}</renameManifestPackage>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+    <profiles>
+        <profile>
+            <id>freeVersion</id>
+            <properties>
+                <flavor>free</flavor>
+                <android.res.dir>${project.basedir}/free/res</android.res.dir>
+            </properties>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-compiler-plugin</artifactId>
+                        <configuration>
+                            <excludes>
+                                <exclude>**/com/packt/paid/*.java</exclude>
+                            </excludes>
+                        </configuration>
+                    </plugin>
+                    <plugin>
+                        <groupId>com.jayway.maven.plugins.android.generation2</groupId>
+                        <artifactId>android-maven-plugin</artifactId>
+                        <configuration>
+                            <androidManifestFile>${basedir}/free/AndroidManifest.xml</androidManifestFile>
+                            <resourceDirectory>${android.res.dir}</resourceDirectory>
+                        </configuration>
+                    </plugin> 
+                </plugins>                   
+            </build>
+        </profile>
+    </profiles>
 </project>

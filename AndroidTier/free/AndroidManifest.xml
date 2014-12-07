@@ -26,12 +26,6 @@
         </activity>
         <activity android:name=".AuthorActivity" >
         </activity>
-        <activity android:name="com.packt.paid.PaidActivity" >
-            <intent-filter>
-                <action android:name="com.packt.paid.intent.action.Launch" />
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-        </activity>
     </application>
 
 </manifest>
