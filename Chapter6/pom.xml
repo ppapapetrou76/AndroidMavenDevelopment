@@ -20,7 +20,13 @@
         <maven.compiler.source>1.7</maven.compiler.source>
         <maven.compiler.target>1.7</maven.compiler.target>
     </properties>
-    
+    <distributionManagement>
+        <repository>
+            <id>internal.repo</id>
+            <name>Android Internal repo</name>
+            <url>http://localhost:8081/artifactory/libs-release-local</url>
+        </repository>
+    </distributionManagement>
     <dependencyManagement>
         <dependencies>
             <dependency>
@@ -39,7 +45,7 @@
         <developerConnection>
             scm:git:https://github.com/ppapapetrou76/AndroidMavenDevelopment
         </developerConnection>
-  </scm>
+    </scm>
     <build>
         <finalName>${project.artifactId}</finalName>
         <pluginManagement>
