@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.packt.androidMaven</groupId>
     <artifactId>chapter6</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.0</version>
     <packaging>pom</packaging>
     <name>Chapter 6 - Release</name>
     <description>Android App Development with Maven</description>
@@ -39,6 +39,7 @@
         <developerConnection>
             scm:git:https://github.com/ppapapetrou76/AndroidMavenDevelopment/tree/master/Chapter6
         </developerConnection>
+    <tag>chapter6-1.0</tag>
   </scm>
     <build>
         <finalName>${project.artifactId}</finalName>
