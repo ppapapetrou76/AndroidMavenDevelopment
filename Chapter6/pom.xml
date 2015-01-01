@@ -37,7 +37,7 @@
     </dependencyManagement>
     <scm>
         <developerConnection>
-            scm:git:https://github.com/ppapapetrou76/AndroidMavenDevelopment/tree/master/Chapter6
+            scm:git:https://github.com/ppapapetrou76/AndroidMavenDevelopment.git
         </developerConnection>
     <tag>chapter6-1.0</tag>
   </scm>
