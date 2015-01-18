@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.packt.androidMaven</groupId>
+    <artifactId>sampleProject</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
+    <name>Sample Project</name>
+    <modules>
+        <module>model</module>
+        <module>service</module>
+        <module>AndroidTier</module>
+    </modules>
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <platform.version>5.0.1_r2</platform.version>
+        <android.plugin.version>3.8.2</android.plugin.version>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.google.android</groupId>
+            <artifactId>android</artifactId>
+            <version>${platform.version}</version>
+            <scope>provided</scope>
+        </dependency>
+    </dependencies>
+    <build>
+        <finalName>${project.artifactId}</finalName>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>com.jayway.maven.plugins.android.generation2</groupId>
+                    <artifactId>android-maven-plugin</artifactId>
+                    <version>${android.plugin.version}</version>
+                    <extensions>true</extensions>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+        <plugins>
+            <plugin>
+                <groupId>com.jayway.maven.plugins.android.generation2</groupId>
+                <artifactId>android-maven-plugin</artifactId>
+                <extensions>true</extensions>
+                <configuration>
+                    <sdk>
+                        <platform>21</platform>
+                    </sdk>
+                    <emulator>
+                        <!--Name of the AVD to start/stop-->
+                        <avd>Nexus_7_2012</avd>
+                        <!-- Timeout to consider whether or not the AVD is successful or failed. Do not be stingy on this value, since your material configuration may affect and influence on startup speed-->
+                        <wait>30000</wait>
+                        <!-- Any other option-->
+                        <options></options>
+                    </emulator>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>
