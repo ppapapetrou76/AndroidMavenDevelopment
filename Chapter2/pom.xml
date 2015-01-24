@@ -47,14 +47,6 @@
                     <sdk>
                         <platform>21</platform>
                     </sdk>
-                    <emulator>
-                        <!--Name of the AVD to start/stop-->
-                        <avd>Nexus_7_2012</avd>
-                        <!-- Timeout to consider whether or not the AVD is successful or failed. Do not be stingy on this value, since your material configuration may affect and influence on startup speed-->
-                        <wait>30000</wait>
-                        <!-- Any other option-->
-                        <options></options>
-                    </emulator>
                 </configuration>
             </plugin>
         </plugins>
