@@ -2,39 +2,34 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.packt.androidMaven</groupId>
-    <artifactId>chapter5</artifactId>
+    <artifactId>sampleProject</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>pom</packaging>
-    <name>Chapter 5 - Library</name>
-    <description>Android App Development with Maven</description>
-
+    <name>Chapter 5 Sample Project</name>
     <modules>
-        <module>CommonLibrary</module>
-        <module>FreeVersion</module>
-        <module>PaidVersion</module>
-    </modules>
+        <module>model</module>
+        <module>service</module>
+        <module>AndroidTier</module>
+        <module>AndroidUnitTests</module>
+        <module>AndroidIntegrationTests</module>
+        <module>SpoonIntegrationTests</module>
+        <module>RobotiumTests</module>
+    <module>SelendroidTests</module>
+  </modules>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <platform.version>4.4.2_r3</platform.version>
+        <platform.version>5.0.1_r2</platform.version>
         <android.plugin.version>3.8.2</android.plugin.version>
-        <maven.compiler.source>1.7</maven.compiler.source>
-        <maven.compiler.target>1.7</maven.compiler.target>
     </properties>
-    <dependencyManagement>
-        <dependencies>
-            <dependency>
-                <groupId>com.google.android</groupId>
-                <artifactId>android</artifactId>
-                <version>${platform.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.google.android</groupId>
-                <artifactId>android-test</artifactId>
-                <version>4.1.1.4</version>
-            </dependency>
-        </dependencies>
-    </dependencyManagement>
-  
+
+    <dependencies>
+        <dependency>
+            <groupId>com.google.android</groupId>
+            <artifactId>android</artifactId>
+            <version>${platform.version}</version>
+            <scope>provided</scope>
+        </dependency>
+    </dependencies>
     <build>
         <finalName>${project.artifactId}</finalName>
         <pluginManagement>
@@ -43,9 +38,6 @@
                     <groupId>com.jayway.maven.plugins.android.generation2</groupId>
                     <artifactId>android-maven-plugin</artifactId>
                     <version>${android.plugin.version}</version>
-                    <configuration>
-                        <undeployBeforeDeploy>true</undeployBeforeDeploy>
-                    </configuration>                    
                     <extensions>true</extensions>
                 </plugin>
             </plugins>
@@ -57,10 +49,76 @@
                 <extensions>true</extensions>
                 <configuration>
                     <sdk>
-                        <platform>19</platform>
+                        <platform>21</platform>
                     </sdk>
                 </configuration>
             </plugin>
         </plugins>
     </build>
+    <profiles>
+        <profile>
+            <id>jacoco</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.jacoco</groupId>
+                        <artifactId>jacoco-maven-plugin</artifactId>
+                        <version>0.7.2.201409121644</version>
+                        <executions>
+                            <execution>
+                                <id>default-prepare-agent</id>
+                                <goals>
+                                    <goal>prepare-agent</goal>
+                                </goals>
+                            </execution>
+                            <execution>
+                                <id>default-report</id>
+                                <phase>prepare-package</phase>
+                                <goals>
+                                    <goal>report</goal>
+                                </goals>
+                            </execution>
+                            <execution>
+                                <id>default-check</id>
+                                <goals>
+                                    <goal>check</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                        <configuration>
+                            <excludes>
+                                <exclude>**/R.class</exclude>
+                                <exclude>**/R$*.class</exclude>
+                                <exclude>**/BuildConfig.class</exclude>
+                            </excludes>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+        <profile>
+            <id>cobertura</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.codehaus.mojo</groupId>
+                        <artifactId>cobertura-maven-plugin</artifactId>
+                        <version>2.5.2</version>
+                        <configuration>
+                            <formats>
+                                <format>html</format>
+                            </formats>						
+                            <instrumentation>
+                                <excludes>
+                                    <exclude>**/R.class</exclude>
+                                    <exclude>**/R$*.class</exclude>
+                                    <exclude>**/BuildConfig.class</exclude>
+                                </excludes>
+                            </instrumentation>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>        
+        </profile>		
+    </profiles>	
 </project>
