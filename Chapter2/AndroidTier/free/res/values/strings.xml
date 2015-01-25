@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <string name="app_name">DroidMaven App (Free version)</string>
-    <string name="hello_world">text_string</string>
-    <string name="view_author">View Author Name!</string>
-    <string name="action_settings">Settings</string>
-    <string name="try_me">Try me!</string>
-</resources>
