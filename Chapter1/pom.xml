@@ -6,7 +6,7 @@
     <artifactId>chapter1</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>apk</packaging>
-    <name>chapter1</name>
+    <name>Chapter 1 Sample Project</name>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
