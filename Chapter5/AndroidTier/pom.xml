@@ -12,7 +12,7 @@
     <name>AndroidTier</name>
     <properties>
         <robolectric.version>2.2</robolectric.version>
-        <junit.version>4.11</junit.version>
+        <junit.version>4.13.1</junit.version>
         <flavor>paid</flavor>
     </properties>
     <dependencies>
